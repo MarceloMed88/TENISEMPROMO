@@ -14,4 +14,9 @@ window.TEP_CONFIG = {
 
   // De quanto em quanto tempo o site busca ofertas novas (segundos).
   refreshSeconds: 60,
+
+  // (Fica para a G3) Meta Pixel — para medir o anúncio no Facebook/Instagram.
+  // Deixe '' (vazio) para NÃO carregar NADA agora (nenhum rastreador é incluído).
+  // Na G3, cole aqui só os números do ID do Pixel. Exemplo: '1234567890'.
+  metaPixelId: '',
 }

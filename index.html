@@ -6,10 +6,22 @@
   <title>Tênis em Promo — ofertas de tênis atualizadas</title>
   <meta name="description" content="As melhores promoções de tênis, atualizadas automaticamente. Mercado Livre, Amazon, Shopee, Nike e mais." />
   <meta name="theme-color" content="#000000" />
-  <meta property="og:title" content="Tênis em Promo" />
-  <meta property="og:description" content="As melhores promoções de tênis, atualizadas automaticamente." />
-  <meta property="og:image" content="og-image.jpg" />
+  <link rel="canonical" href="https://www.tenisempromo.com.br/" />
+  <!-- OpenGraph (preview em WhatsApp, Facebook e no anúncio do Meta) -->
+  <meta property="og:site_name" content="Tênis em Promo" />
+  <meta property="og:title" content="Tênis em Promo — ofertas de tênis atualizadas" />
+  <meta property="og:description" content="As melhores promoções de tênis, atualizadas automaticamente. Mercado Livre, Amazon, Shopee, Nike e mais." />
+  <meta property="og:image" content="https://www.tenisempromo.com.br/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://www.tenisempromo.com.br/" />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <!-- Twitter / X cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tênis em Promo — ofertas de tênis atualizadas" />
+  <meta name="twitter:description" content="As melhores promoções de tênis, atualizadas automaticamente." />
+  <meta name="twitter:image" content="https://www.tenisempromo.com.br/og-image.jpg" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -126,6 +138,11 @@
       <b>Tênis em Promo</b> — os links desta página são links de afiliado: podemos receber uma comissão pelas compras,
       sem nenhum custo extra para você. Preços, cupons e estoque são definidos pelas lojas e podem mudar sem aviso;
       confira sempre na página da loja antes de comprar. As ofertas ficam aqui por até 7 dias.
+      <br /><br />
+      <b>Privacidade (LGPD).</b> Este site não exige cadastro e não coleta dados pessoais seus: não há login, formulário
+      nem cookies de rastreamento. Ao clicar em uma oferta você é levado à loja parceira, onde passam a valer os termos e
+      a política de privacidade daquela loja. “Tênis em Promo” é um site independente de divulgação de ofertas e não é
+      a loja vendedora.
     </div>
   </footer>
   <div id="toast" class="toast" role="status"></div>
@@ -147,6 +164,23 @@
       var wa = document.getElementById('wa')
       wa.href = cfg.whatsappUrl
       wa.style.display = 'inline-flex'
+    }
+
+    // (G3) Meta Pixel — só carrega se metaPixelId estiver preenchido no config.js.
+    // Vazio (padrão) = NENHUM rastreador é carregado. Ao ativar na G3, libere os
+    // domínios do Facebook na CSP (script-src/connect-src/img-src).
+    var pixelId = (cfg.metaPixelId || '').toString().replace(/\D/g, '')
+    if (pixelId) {
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return
+        n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }
+        if (!f._fbq) f._fbq = n
+        n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []
+        t = b.createElement(e); t.async = !0; t.src = v
+        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
+      window.fbq('init', pixelId)
+      window.fbq('track', 'PageView')
     }
 
     function el(tag, cls, text) {
